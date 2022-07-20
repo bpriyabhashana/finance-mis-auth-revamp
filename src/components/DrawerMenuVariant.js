@@ -47,7 +47,7 @@ const DrawerMenuVariant = (props) => {
         }}
       >
         <div className={classes.toolbar}></div>
-        <Divider />
+        {/* <Divider /> */}
         <List>
           {/* {isAccessGranted([Privileges.DASHBOARD_PAGE]) && */}
           <NavLink to={PAGES.DASHBOARD} className={classes.navLink}>

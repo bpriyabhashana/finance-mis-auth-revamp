@@ -637,7 +637,11 @@ const Main = (props) => {
                       </Typography>
                     </Grid>
                     <Grid item>
-                      <Avatar onClick={handleClick} alt="e mail">
+                      <Avatar
+                        onClick={handleClick}
+                        style={{ cursor: "pointer" }}
+                        alt="e mail"
+                      >
                         <PersonIcon />
                       </Avatar>
                     </Grid>
