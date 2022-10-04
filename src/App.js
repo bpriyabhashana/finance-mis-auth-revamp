@@ -1,32 +1,26 @@
-import "./App.css";
 import { AuthProvider } from "@asgardeo/auth-react";
-import Main from "./components/Main";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { AUTH_CONFIG } from "./Config";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { ThemeProvider } from "@mui/material";
 import GlobalStyles from "./components/GlobalStyles";
-import { ThemeProvider } from "@mui/material/styles";
+import HomePage from "./pages/HomePage";
+import NotFound from "./pages/NotFound";
 import theme from "./theme";
-import NotFoundPage from "./components/NotFound";
 
-function App() {
+const App = () => {
   return (
     <ThemeProvider theme={theme}>
+      <GlobalStyles />
       <AuthProvider config={AUTH_CONFIG}>
-        <GlobalStyles />
         <BrowserRouter>
           <Switch>
-            <Route
-              path={"/"}
-              render={({ match, location, history }) => {
-                return <Main page={location.pathname} />;
-              }}
-            />
-            <Route component={NotFoundPage} />
+            <Route path="/" component={HomePage} />
+            <Route component={NotFound} />
           </Switch>
         </BrowserRouter>
       </AuthProvider>
     </ThemeProvider>
   );
-}
+};
 
 export default App;

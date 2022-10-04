@@ -1,20 +1,21 @@
 import { colors } from "@mui/material";
-import { createTheme } from "@mui/material/styles";
+import { createTheme } from "@mui/material";
 import shadows from "./shadows";
 import typography from "./typography";
 
 const theme = createTheme({
   palette: {
     background: {
-      default: "#F4F6F8",
+      default: "#fff",
       paper: colors.common.white,
     },
     primary: {
       contrastText: "#ffffff",
       main: "#212a32",
+      light: "#465867",
     },
     secondary: {
-      contrastText: "#ffffff",
+      contrastText: "#fff",
       main: "#ff7300",
     },
     text: {
@@ -25,6 +26,17 @@ const theme = createTheme({
       contrastText: "#ffffff",
       main: "#05c46b",
     },
+    disabled: {
+      main: "rgba(0, 0, 0, 0.30)"
+    }, 
+    colors: {
+      delete: "#F37878",
+      white: "#FFF"
+    },
+    status: {
+      completed: "#76BA99",
+      expired: "#F37878"
+    }
   },
   transitions: {
     duration: {
