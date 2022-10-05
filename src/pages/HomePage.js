@@ -195,15 +195,15 @@ const HomePage = () => {
   const handleLogout = () => {
     setIsAppInitializing(true);
     // revoke token is not working for choreo
-    // revokeTokens(() => {
-    signOut().catch((e) => {
-      console.error(e);
+    revokeTokens(() => {
+      signOut().catch((e) => {
+        console.error(e);
+      });
+      setIsInitLogin("false");
+      setIsLoggedOut("true");
+      setIsSessionTimeOut("false");
+      setIsAppInitializing(false);
     });
-    setIsInitLogin("false");
-    setIsLoggedOut("true");
-    setIsSessionTimeOut("false");
-    setIsAppInitializing(false);
-    // });
   };
 
   useEffect(() => {

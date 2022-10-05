@@ -117,6 +117,7 @@ export function getRefreshToken() {
 }
 
 export const revokeTokens = async (callbackFn) => {
+  console.log("TEST");
   if (!accessToken) {
     if (callbackFn) {
       callbackFn();
@@ -126,43 +127,47 @@ export const revokeTokens = async (callbackFn) => {
   }
 
   let headers = {
+    Authorization:
+      "Basic " +
+      btoa(
+        `${CHOREO_AUTH_CONFIG.TOKEN_APIS.CHOREO_CLIENT_ID}:${CHOREO_AUTH_CONFIG.TOKEN_APIS.CHOREO_CLIENT_SECRET}`
+      ),
     "Content-Type": "application/x-www-form-urlencoded",
   };
 
   let token =
     encodeURIComponent("token") + "=" + encodeURIComponent(accessToken);
-  let clientId =
-    encodeURIComponent("client_id") +
-    "=" +
-    encodeURIComponent(OAUTH_CONFIG.TOKEN_APIS.CLIENT_ID);
 
-  let formBody = [token, clientId];
+  let formBody = [token];
 
   // revoke token endpoint calling
 
-  // try {
-  //   const fetchResult = fetch(OAUTH_CONFIG.TOKEN_APIS.APIM_REVOKE_ENDPOINT, {
-  //     method: "POST",
-  //     headers: headers,
-  //     body: formBody.join("&"),
-  //   });
-  //   const response = await fetchResult;
+  try {
+    const fetchResult = fetch(
+      CHOREO_AUTH_CONFIG.TOKEN_APIS.CHOREO_REVOKE_ENDPOINT,
+      {
+        method: "POST",
+        headers: headers,
+        body: formBody.join("&"),
+      }
+    );
+    const response = await fetchResult;
 
-  //   if (response.ok) {
-  //     if (callbackFn) {
-  //       callbackFn();
-  //     }
-  //   } else {
-  //     console.error(
-  //       "Error when calling token revoke endpoint! ",
-  //       response.status,
-  //       " ",
-  //       response.statusText
-  //     );
-  //   }
-  // } catch (exception) {
-  //   console.error("Token revocation failed: ", exception);
-  // }
+    if (response.ok) {
+      if (callbackFn) {
+        callbackFn();
+      }
+    } else {
+      console.error(
+        "Error when calling token revoke endpoint! ",
+        response.status,
+        " ",
+        response.statusText
+      );
+    }
+  } catch (exception) {
+    console.error("Token revocation failed: ", exception);
+  }
 };
 
 export const getNewTokens = async (resolve, failFn) => {
