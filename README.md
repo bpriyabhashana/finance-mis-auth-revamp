@@ -1,22 +1,40 @@
 ## Add below variables to .env file that created in root
 
-REACT_APP_BASE_URL= \
-REACT_APP_ASGARDEO_CLIENT_ID= \
-REACT_APP_ASGARDEO_SERVER_ORIGIN= \
-REACT_APP_APIM_TOKEN_ENDPOINT= \
-REACT_APP_APIM_IDP_CLIENT_ID= \
-REACT_APP_APIM_IDP_CLIENT_SECRET=
+```
+REACT_APP_ASGARDEO_SERVER_ORIGIN = Asgardeo server origin\
+REACT_APP_ASGARDEO_CLIENT_ID = "Asgardeo client ID"
 
-REACT_APP_ARR_API_URL=
+REACT_APP_AUTH_SIGNIN_REDIRECT_URL = "Application redirect URL"\
+REACT_APP_AUTH_SIGNOUT_REDIRECT_URL = "Application signout URL"
 
-## To use Asgardeo ID token and APIM token do as follow
+REACT_APP_CHOREO_TOKEN_ENDPOINT = "Choreo token endpoint"\
+REACT_APP_CHOREO_REVOKE_ENDPOINT = "Choreo revoke endpoint"\
+REACT_APP_CHOREO_CLIENT_ID = "Choreo client ID"\
+REACT_APP_CHOREO_CLIENT_SECRET = "Choreo client secret"
+```
 
-# import {getToken, getIdToken} from "./utils/oauth" to the respective component
+## Initial Application setup
 
-Ex : import { getToken, getIdToken } from "../utils/oauth";
+Do the following changes in `Config.toml` file
+
+```
+//add your app name
+export const APP_NAME = "Auth Boilerplate";
+
+//add your app name as a route
+export const APP_NAME_ROUTE = "/auth-boilerplate";
+```
+
+## To use Asgardeo ID token and Choreo token do as follow
+
+```
+import {getToken, getIdToken} from "./utils/oauth" to the respective component
+```
+
+Ex : `import { getToken, getIdToken } from "../utils/oauth"`;
 
 Then you will be able to use such tokens from getters.
 
-Ex: getIdToken(), getToken()
+Ex: `getIdToken()`, `getToken()`
 
 (getIdToken - Asgardeo token, getToken - APIM token)

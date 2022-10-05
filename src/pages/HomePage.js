@@ -29,7 +29,7 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import { APP_NAME, APP_CONFIG, AUTH_CONFIG, OAUTH_CONFIG } from "../Config";
+import { APP_NAME, APP_CONFIG, AUTH_CONFIG } from "../Config";
 import { getPrivilegesByRoles } from "../utils/end-points";
 import { QUERY_PARAMS_REGEX } from "../Config.js";
 import { useHistory } from "react-router-dom";

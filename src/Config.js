@@ -15,15 +15,6 @@ export const AUTH_CONFIG = {
   scope: ["openid", "profile"],
 };
 
-// Credentials for APIM token exchange
-export const OAUTH_CONFIG = {
-  TOKEN_APIS: {
-    APIM_TOKEN_ENDPOINT: process.env.REACT_APP_APIM_TOKEN_ENDPOINT,
-    CLIENT_ID: process.env.REACT_APP_APIM_CLIENT_ID,
-    APIM_REVOKE_ENDPOINT: process.env.REACT_APP_APIM_REVOKE_ENDPOINT,
-  },
-};
-
 // Credentials for choreo token exchange
 export const CHOREO_AUTH_CONFIG = {
   TOKEN_APIS: {
