@@ -262,6 +262,11 @@ export const refreshTokens = async (resolve) => {
   }
 
   let headers = {
+    Authorization:
+      "Basic " +
+      btoa(
+        `${CHOREO_AUTH_CONFIG.TOKEN_APIS.CHOREO_CLIENT_ID}:${CHOREO_AUTH_CONFIG.TOKEN_APIS.CHOREO_CLIENT_SECRET}`
+      ),
     "Content-Type": "application/x-www-form-urlencoded",
   };
   let grantType =
@@ -272,19 +277,18 @@ export const refreshTokens = async (resolve) => {
     encodeURIComponent("refresh_token") +
     "=" +
     encodeURIComponent(refreshToken);
-  let clientId =
-    encodeURIComponent("client_id") +
-    "=" +
-    encodeURIComponent(OAUTH_CONFIG.TOKEN_APIS.CLIENT_ID);
 
-  let formBody = [grantType, _refreshToken, clientId];
+  let formBody = [grantType, _refreshToken];
 
   try {
-    const fetchResult = fetch(OAUTH_CONFIG.TOKEN_APIS.APIM_TOKEN_ENDPOINT, {
-      method: "POST",
-      headers: headers,
-      body: formBody.join("&"),
-    });
+    const fetchResult = fetch(
+      CHOREO_AUTH_CONFIG.TOKEN_APIS.CHOREO_TOKEN_ENDPOINT,
+      {
+        method: "POST",
+        headers: headers,
+        body: formBody.join("&"),
+      }
+    );
     const response = await fetchResult;
     const jsonData = await response.json();
 

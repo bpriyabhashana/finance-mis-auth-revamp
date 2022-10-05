@@ -4,9 +4,6 @@ export const APP_NAME_ROUTE = "/auth-boilerplate";
 
 export const APP_CONTEXT = APP_NAME_ROUTE;
 
-// set your API endpoints
-export const BASE_URL = process.env.REACT_APP_BASE_URL;
-
 export const QUERY_PARAMS_REGEX = /^[a-z0-9]*$/i;
 
 export const AUTH_CONFIG = {
@@ -31,6 +28,7 @@ export const OAUTH_CONFIG = {
 export const CHOREO_AUTH_CONFIG = {
   TOKEN_APIS: {
     CHOREO_TOKEN_ENDPOINT: process.env.REACT_APP_CHOREO_TOKEN_ENDPOINT,
+    CHOREO_REVOKE_ENDPOINT: process.env.REACT_APP_CHOREO_REVOKE_ENDPOINT,
     CHOREO_CLIENT_ID: process.env.REACT_APP_CHOREO_CLIENT_ID,
     CHOREO_CLIENT_SECRET: process.env.REACT_APP_CHOREO_CLIENT_SECRET,
   },

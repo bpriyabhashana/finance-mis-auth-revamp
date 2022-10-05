@@ -1,6 +1,4 @@
 import { getIdToken, handleTokenFailure, getAccessToken } from "./oauth";
-import { MOBILE_INTERNAL_AUTHORIZATION_KEY } from "../Config";
-import { getEmployees } from "../utils/end-points.js";
 
 const useHttp = () => {
   const MAX_TRIES = 3;
