@@ -237,11 +237,3 @@ export default function MiniDrawer({ open, hoverActive, page, ...rest }) {
     </Drawer>
   );
 }
-
-// import React from "react";
-
-// const Sidebar = () => {
-//   return <div>test</div>;
-// };
-
-// export default Sidebar;

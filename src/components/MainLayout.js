@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import useHttp from "../utils/http";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { experimentalStyled } from "@mui/material";
@@ -125,7 +125,8 @@ const MainLayout = (props) => {
           <MainLayoutContainer>
             <MainLayoutContent>
               <Switch>
-                {/* {isAccessGranted([PRIVILEGES.NEW_TRAVEL_REQUESTS]) && ( */}
+                // sample previlage request
+                {/* {isAccessGranted([PRIVILEGES.ADMIN_ACCESS]) && ( */}
                 <Route
                   exact
                   path={APP_CONFIG.PAGES.HOME}
@@ -134,7 +135,6 @@ const MainLayout = (props) => {
                   }}
                 />
                 {/* )} */}
-
                 <Route
                   path={APP_CONFIG.PAGES.NOT_FOUND}
                   render={({ match, location, history }) => {

@@ -33,7 +33,7 @@ export const USER_CUSTOM_CONFIGS = {
 // Sample previlages
 export const PRIVILEGES = {
   HOME: 1,
-  ALL_TRAVEL_REQUESTS: 2,
+  ADMIN_ACCESS: 2,
 };
 
 export const APP_CONFIG = {
