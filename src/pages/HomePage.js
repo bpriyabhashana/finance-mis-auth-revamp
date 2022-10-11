@@ -29,7 +29,12 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import { APP_NAME, APP_CONFIG, AUTH_CONFIG } from "../Config";
+import {
+  APP_NAME,
+  APP_CONFIG,
+  AUTH_CONFIG,
+  ACTION_CUSTOM_CONFIGS,
+} from "../Config";
 import { getPrivilegesByRoles } from "../utils/end-points";
 import { QUERY_PARAMS_REGEX } from "../Config.js";
 import { useHistory } from "react-router-dom";
@@ -145,37 +150,38 @@ const HomePage = () => {
   };
 
   const initUserPrivileges = useCallback(async (callbackFn) => {
-    setIsAppInitializing(true);
-    // handleRequest(
-    //   getPrivilegesByRoles,
-    //   "GET",
-    //   null,
-    //   (data) => {
-    //     setUserPrivileges(data);
-    //     if (data.length === 0) {
-    //       setSnackbarData({
-    //         message: "You are not privileged to view this app",
-    //         open: true,
-    //         severity: "error",
-    //         onClose: onCloseSnackbar,
-    //       });
-    //     } else if (callbackFn) {
-    //       callbackFn();
-    //     }
-    //     setLoadPrivileges(true);
-    //   },
-    //   () => {
-    //     setSnackbarData({
-    //       message:
-    //         "An error occurred in initializing the app! Try reloading the page. Please contact the Internal Apps Team if this issue continues.",
-    //       open: true,
-    //       severity: "error",
-    //       onClose: onCloseSnackbar,
-    //     });
-    //   },
-    //   setIsAppInitializing
-    // );
-    setIsAppInitializing(false);
+    if (ACTION_CUSTOM_CONFIGS.ROLE_BASED_AUTH) {
+      setIsAppInitializing(true);
+      handleRequest(
+        getPrivilegesByRoles,
+        "GET",
+        null,
+        (data) => {
+          setUserPrivileges(data);
+          if (data.length === 0) {
+            setSnackbarData({
+              message: "You are not privileged to view this app",
+              open: true,
+              severity: "error",
+              onClose: onCloseSnackbar,
+            });
+          } else if (callbackFn) {
+            callbackFn();
+          }
+          setLoadPrivileges(true);
+        },
+        () => {
+          setSnackbarData({
+            message:
+              "An error occurred in initializing the app! Try reloading the page. Please contact the Internal Apps Team if this issue continues.",
+            open: true,
+            severity: "error",
+            onClose: onCloseSnackbar,
+          });
+        },
+        setIsAppInitializing
+      );
+    }
   }, []);
 
   const setIsInitLogin = (value) => {

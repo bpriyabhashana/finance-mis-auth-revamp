@@ -26,6 +26,11 @@ export const CHOREO_AUTH_CONFIG = {
 };
 
 // User configs - Customize according to the choice of user
+export const ACTION_CUSTOM_CONFIGS = {
+  ROLE_BASED_AUTH: false,
+};
+
+// User configs - Customize according to the choice of user
 export const USER_CUSTOM_CONFIGS = {
   LAUNCHPAD: false,
 };
