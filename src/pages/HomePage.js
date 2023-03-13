@@ -252,26 +252,31 @@ const HomePage = () => {
           decodedIDTokenPayload: decodedIDToken,
         };
         setIdToken(idToken);
+        setLoadApp(true);
 
-        if (idToken) {
-          getNewTokens(() => {
-            setLoadApp(true);
-
-            if (callback) {
-              callback();
-            }
-          }).catch((e) => {
-            console.error(e);
-            setSnackbarData({
-              message:
-                "An error occurred in initializing the app! Try reloading the page. Please contact the Internal Apps Team if this issue continues.",
-              open: true,
-              severity: "error",
-              onClose: onCloseSnackbar,
-            });
-            sessionClearFn();
-          });
+        if (callback) {
+          callback();
         }
+
+        // if (idToken) {
+        //   getNewTokens(() => {
+        //     setLoadApp(true);
+
+        //     if (callback) {
+        //       callback();
+        //     }
+        //   }).catch((e) => {
+        //     console.error(e);
+        //     setSnackbarData({
+        //       message:
+        //         "An error occurred in initializing the app! Try reloading the page. Please contact the Internal Apps Team if this issue continues.",
+        //       open: true,
+        //       severity: "error",
+        //       onClose: onCloseSnackbar,
+        //     });
+        //     sessionClearFn();
+        //   });
+        // }
 
         if (basicUserInfo?.email) {
           setUserName(basicUserInfo.email);

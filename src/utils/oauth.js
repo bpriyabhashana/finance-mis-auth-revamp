@@ -332,7 +332,7 @@ export const refreshTokens = async (resolve) => {
 
         if (returnedIdToken) {
           setIdToken(returnedIdToken);
-          let accessToken = await getNewTokens();
+          // let accessToken = await getNewTokens();
         }
       }
     }
