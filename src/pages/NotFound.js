@@ -1,9 +1,10 @@
 // import { Helmet } from "react-helmet";
+import React from "react";
 import { APP_CONFIG, APP_NAME } from "../Config";
 import { Box, Container, Link, Typography } from "@mui/material";
 
 const NotFound = () => (
-  <>
+  <div>
     {/* <Helmet> */}
     <title>404 | {APP_NAME}</title>
     {/* </Helmet> */}
@@ -48,7 +49,7 @@ const NotFound = () => (
         </Box> */}
       </Container>
     </Box>
-  </>
+  </div>
 );
 
 export default NotFound;

@@ -1,0 +1,19 @@
+.menu-item {
+  padding: 0 0px;
+  margin: 0px 0px;
+  user-select: none;
+  cursor: pointer;
+  border: none;
+}
+.menu-item-wrapper.active {
+  border: 1px rgb(203, 203, 248) solid;
+}
+.menu-item.active {
+  border: 1px rgb(198, 248, 198) solid;
+}
+
+.scroll-menu-arrow {
+  padding: 10px;
+  color: rgb(46, 139, 59);
+  cursor: pointer;
+}

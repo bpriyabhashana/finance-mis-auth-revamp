@@ -1,0 +1,14 @@
+.zoom {
+  padding: 3px;
+  background-color: rgb(233, 233, 233);
+  transition: transform 0.2s; /* Animation */
+  transform-origin: top left;
+  z-index: 4;
+  position: relative;
+}
+
+.zoom:hover {
+  z-index: 100;
+  /* transform-origin: top left; */
+  transform: scale(5.5);
+}

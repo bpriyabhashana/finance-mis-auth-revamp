@@ -12,7 +12,7 @@ export const AUTH_CONFIG = {
   clientID: `${process.env.REACT_APP_ASGARDEO_CLIENT_ID}`,
   serverOrigin: `${process.env.REACT_APP_ASGARDEO_SERVER_ORIGIN}`,
   baseUrl: `${process.env.REACT_APP_ASGARDEO_SERVER_ORIGIN}`,
-  scope: ["openid", "profile"],
+  scope: ["openid", "CertificationPortal-Admin"],
 };
 
 // Credentials for choreo token exchange

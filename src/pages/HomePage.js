@@ -1,7 +1,6 @@
+import React from "react";
 import CustomSnackbar from "../components/ui/Snackbars.js";
-import IdleTimer from "../components/IdleTimer";
 import LoadingButton from "@mui/lab/LoadingButton";
-import MainLayout from "../components/MainLayout";
 import NotFound from "./NotFound";
 import UserContext from "../context/user-context";
 import useHttp from "../utils/http";
@@ -39,6 +38,7 @@ import { getPrivilegesByRoles } from "../utils/end-points";
 import { QUERY_PARAMS_REGEX } from "../Config.js";
 import { useHistory } from "react-router-dom";
 import BackdropProgress from "../BackdropProgress.js";
+import Dashboard from "../leyouts/Dashboard/Dashboard.jsx";
 
 const HomePage = () => {
   const history = useHistory();
@@ -213,7 +213,7 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    if (!getIsLoggedOut() && !(state?.isLoading || state?.isAuthenticated)) {
+    if (!getIsLoggedOut() && !(state.isLoading || state.isAuthenticated)) {
       handleLogin();
     }
   }, [state.isLoading, state.isAuthenticated]);
@@ -278,10 +278,10 @@ const HomePage = () => {
         //   });
         // }
 
-        if (basicUserInfo?.email) {
+        if (basicUserInfo.email) {
           setUserName(basicUserInfo.email);
         }
-        if (basicUserInfo?.groups) {
+        if (basicUserInfo.groups) {
           setUserRoles(basicUserInfo.groups);
         }
       };
@@ -330,28 +330,29 @@ const HomePage = () => {
           </p>
         </div>
       ) : state.isAuthenticated && loadApp ? (
-        <UserContext.Provider
-          value={{
-            userName: getUserName(),
-            handleLogout: handleLogout,
-          }}
-        >
-          <BrowserRouter>
-            <Switch>
-              <Route
-                path={APP_CONFIG.PAGES.APP}
-                render={({ match, location, history }) => {
-                  return <MainLayout page={location.pathname} />;
-                }}
-              />
-              <Redirect exact from="/" to={APP_CONFIG.PAGES.APP} />
-              <Route component={NotFound} />
-            </Switch>
-            <IdleTimer sessionClearFn={sessionClearFn} />
-          </BrowserRouter>
-        </UserContext.Provider>
+        <Dashboard />
       ) : (
-        <>
+        // <UserContext.Provider
+        //   value={{
+        //     userName: getUserName(),
+        //     handleLogout: handleLogout,
+        //   }}
+        // >
+        //   <BrowserRouter>
+        //     <Switch>
+        //       <Route
+        //         path={APP_CONFIG.PAGES.APP}
+        //         render={({ match, location, history }) => {
+        //           return <MainLayout page={location.pathname} />;
+        //         }}
+        //       />
+        //       <Redirect exact from="/" to={APP_CONFIG.PAGES.APP} />
+        //       <Route component={NotFound} />
+        //     </Switch>
+        //     <IdleTimer sessionClearFn={sessionClearFn} />
+        //   </BrowserRouter>
+        // </UserContext.Provider>
+        <div>
           {/* <Helmet> */}
           <title>Login | {APP_NAME}</title>
           {/* </Helmet> */}
@@ -419,7 +420,7 @@ const HomePage = () => {
               </Card>
             </Container>
           </Box>
-        </>
+        </div>
       )}
     </Fragment>
   );
